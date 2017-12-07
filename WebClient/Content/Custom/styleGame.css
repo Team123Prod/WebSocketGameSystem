@@ -8,7 +8,7 @@ body {
     text-align: center;
 }
 .ai {
-    background-image: url('./img/ai.jpg');
+    background-image: url('img/ai.jpg');
 }
 .container {
     margin: 50px auto;
@@ -25,5 +25,5 @@ body {
     border-color: green;
 }
 .player {
-    background-image: url('./img/player.jpg');
+    background-image: url('img/player.jpg');
 }
