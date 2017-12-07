@@ -8,6 +8,7 @@
 	<link href="Content/bootstrap.min.css" rel="stylesheet" />
 	<script src="Scripts/jquery.cookie-1.4.1.min.js"></script>
     <script src="Scripts/Models/Request.js"></script>
+    <script src="Scripts/Models/connection.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -52,7 +53,8 @@
 
         function sendAuthRequest() {
             var request = new Request("AuthModule", "Login", getAuthData());
-			ws.send(request);
+            var json = JSON.stringify(request);
+			ws.send(json);
 		}
 
 	</script>

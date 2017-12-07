@@ -6,14 +6,14 @@ var ws = new WebSocket("ws://localhost:8881/Server");
     };
 
     ws.onopen = function () {
-         var s = s + "\nYou've connected to server";
+         console.log("\nYou've connected to server");
     };
 
     ws.onclose = function () {
-        var s = s + "\nConnection was closed";;
+        console.log("\nConnection was closed");
     };
 
-	ws.send = function(req) {
+	var send = function(req) {
 		var reqJson = JSON.stringify(req);
         ws.send(reqJson);
     };
