@@ -1,7 +1,7 @@
 class Request {
-    constructor(cmd, module, args) {
-        this.cmd = cmd;
+    constructor(module, cmd, args) {
         this.module = module;
+        this.cmd = cmd;
         this.args = args;
     }
 }

@@ -1,4 +1,5 @@
-﻿using GameSystem.Models;
+﻿using System;
+using GameSystem.Models;
 
 namespace GameSystem.Modules
 {
@@ -6,9 +7,15 @@ namespace GameSystem.Modules
     {
         public void Dispach(Request request)//сюда свои параметры Client client, RequestObject info, List<Client> clientsList)
         {
-           // switch ()
+            switch (request.Cmd)
             {
-                
+                case "Login":
+                    Console.WriteLine(request.Module + request.Cmd);
+                    break;
+                case "Logout":
+                    break;
+                case "Registration":
+                    break;
             }
         }
     }
