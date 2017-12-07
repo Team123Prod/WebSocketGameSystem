@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GAME System</title>
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" align=center><h2>Lobby</h2></div>
+            <div class="col-md-2" align=right>
+                <a href="" id="refSignin">Sign in</a><br>
+                <a href="" id="refRegistration">Registration</a>
+            </div>
+            <div class="col-md-2" align=center><a href="" id="refPlayerRank">Player Ranking</a><br></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                <!--ListOfGames-->
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center" id="listGames">List of games</div>
+                    <div class="panel-body">
+                        <div class="checkbox ">
+                            <label><input type="checkbox" value="" id="chbox">Private room</label>
+                        </div>
+                        <h4>Tic-tac-toe <button type="button" class="btn btn-default" onClick='location.href="game.html"' id="btnCreateRoom1">Create room</button></h4>
+                        <h4>Checkers <button type="button" class="btn btn-default" id="btnCreateRoom2">Create room</button></h4>
+                        <h4>Chess <button type="button" class="btn btn-default" id="btnCreateRoom3">Create room</button></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <!--Games opened for joining-->
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center" id="panelGamesOpened">Games opened for joining</div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-info" id="tableTictactoe">
+                                <h4><b>Tic-tac-toe</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th id="tictactoeUserLogin">Login</th>
+                                            <th id="tictactoeUserRate">Rate</th>
+                                            <th id="tictactoeUserWins">Wins</th>
+                                            <th id="tictactoeUserDefeats"> Defeats</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>VasyaZver</td>
+                                            <td>105</td>
+                                            <td>30</td>
+                                            <td>9</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-default" id="btnJoin">JOIN</button>
+                            </li>
+
+                            <p>
+                            <li class="list-group-item list-group-item-success">
+                                <h4><b>Chess</b>
+                                </h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Login</th>
+                                            <th>Rate</th>
+                                            <th>Wins</th>
+                                            <th>Defeats</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>SergKrest</td>
+                                            <td>1</td>
+                                            <td>75</td>
+                                            <td>0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-default">JOIN</button>
+                            </li>
+
+                            <p>
+                            <li class="list-group-item list-group-item-warning">
+                                <h4><b>Checkers</b>
+                                </h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Login</th>
+                                            <th>Rate</th>
+                                            <th>Wins</th>
+                                            <th>Defeats</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>LenyaKing</td>
+                                            <td>45</td>
+                                            <td>66</td>
+                                            <td>2</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-default">JOIN</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-2">
+                <!--List of free players-->
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center" id="listFreePlayers">List of free players</div>
+                    <div class="panel-body">
+                        Player 1 <button type="button" class="btn btn-default">Invite</button>
+                        Player 2 <button type="button" class="btn btn-default">Invite</button>
+                        Player 3 <button type="button" class="btn btn-default">Invite</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
