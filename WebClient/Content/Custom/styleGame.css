@@ -12,6 +12,7 @@ body {
 }
 .container {
     margin: 100px;
+	display: none;
 }
 .cell {
     background-color: white;
@@ -25,4 +26,8 @@ body {
 }
 .player {
     background-image: url("img/player.jpg");
+}
+.state-game {
+	font-size: 22pt;
+	color: white;
 }

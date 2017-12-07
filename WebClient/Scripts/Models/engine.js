@@ -1,3 +1,4 @@
+
 var t = new Array(9);
 var isBot = false;
 var player = null;
@@ -43,11 +44,25 @@ function reload() {
   location.reload();
 }
 function findPlayer() {
+	FindGame('Open');
 	debugger
+	$(".state-game").text("Wait...");
+	//document.getElementById('.state-game').value = "Wait...";
   var login = document.getElementById('login').value;
   player = new Player(login);
   send(new Request('connect', 'no', 1, player, 0));
 }
 function start() {
   $(".container").attr('disabled','disabled');
+}
+function FindGame(cmd) {
+	switch (cmd) {
+		case 'XO':
+			document.location.href = 'game.html';
+			break;
+		case 'Open':
+			ShowGame();
+			break;
+
+	}
 }

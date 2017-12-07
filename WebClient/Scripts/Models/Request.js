@@ -1,9 +1,7 @@
 class Request {
-	constructor(cmd, module, idRoom, player, idMove) {
+	constructor(module, cmd, Args) {
     this.cmd = cmd;
     this.module = module;
-	this.idRoom = idRoom;
-	this.player = player;
-	this.idMove = idMove;
+	this.Args = Args;
   }
 }

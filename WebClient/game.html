@@ -11,9 +11,22 @@
     <script src="Scripts/Models/engine.js"></script>
     <script src="Scripts/Models/Player.js"></script>
     <script src="Scripts/Models/Request.js"></script>
+	<script src="Scripts/Models/ShowModels.js"></script>
 </head>
 <body>
-    <div class="container">
+	
+	<div class="checkbox">
+		<input type="button" onclick="reload()" value="Reload"><p>
+			<label><input id="isBot" type="checkbox">Play with bot!</label><br>
+			Your login: <br><input type="text" id="login" value="">
+		<p>
+			<input type="button" onclick="findPlayer()" value="Find player">
+		<p>
+			<input type="button" onclick="start()" value="Start">
+		<p>
+	</div>
+	<span class="state-game">Wait...</span><br />
+    <div class="container" id="container">
         <table>
             <tr>
                 <td class="cell" id="0" onclick="move(0, 'player')"></td>
@@ -31,18 +44,6 @@
                 <td class="cell" id="8" onclick="move(8, 'player')"></td>
             </tr>
         </table>
-
-
-        <div class="checkbox">
-            <input type="button" onclick="reload()" value="Reload"><p>
-                <label><input id="isBot" type="checkbox" value="">Play with bot!</label><br>
-                Your login: <br><input type="text" id="login" value="">
-            <p>
-                <input type="button" onclick="findPlayer()" value="Find player">
-            <p>
-                <input type="button" onclick="start()" value="Start">
-            <p>
-        </div>
     </div>
 </body>
 </html>
