@@ -7,7 +7,7 @@ namespace GameSystem.Game
         static IType getTypeOfGame(Request req)
         {
             IType typeGame = null;
-            switch (req._cmd)
+            switch (req.Cmd)
             {
                 case "TicTacToe":
                     typeGame = new TicTacToe();

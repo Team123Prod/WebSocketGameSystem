@@ -17,8 +17,8 @@ namespace GameSystem
         {
             Request requstObject = JsonConvert.DeserializeObject<Request>(e.Data);
             TicTacToe tic = new TicTacToe();
-            tic.Start(requstObject._idMove);
-            Sessions.Broadcast(requstObject._idMove.ToString());
+            //tic.Start(requstObject._idMove);
+            //Sessions.Broadcast(requstObject._idMove.ToString());
         }
         protected override void OnClose(CloseEventArgs e)
         {
