@@ -38,5 +38,22 @@
 			</div>
 		</form>
 	</div>
+
+	<script>
+		function getAuthData() {
+			var login = $("#login");
+			var psw = $("#pwd");
+			return {
+				Login: login.val(),
+				Password: psw.val()
+			}
+		}
+
+		function sendAuthRequest() {
+			ws.send(getAuthData());
+		}
+
+	</script>
+
 </body>
 </html>
