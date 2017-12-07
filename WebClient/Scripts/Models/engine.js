@@ -2,7 +2,6 @@ var t = new Array(9);
 var isBot = false;
 var player = null;
 function go(id) {
-	debugger
 	send(new Request('cmd', 'module', 1,  player, id));
 }
 function ai(id) {
@@ -26,7 +25,6 @@ function checkEnd() {
 }
 
 function move(id, role) {
-	debugger
   if(t[id]) return false;
   t[id] = role;
   document.getElementById(id).className = 'cell ' + role;
