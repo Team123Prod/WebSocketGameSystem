@@ -27,7 +27,7 @@ var ws = new WebSocket("ws://localhost:8881/Server");
         ws.send(reqJson);
     };
 
-	this.send = function (req) {
-		 var reqJson = JSON.stringify(req);
-		 ws.send(reqJson);
-	 };
+	//this.send = function (req) {
+	//	 var reqJson = JSON.stringify(req);
+	//	 ws.send(reqJson);
+	// };

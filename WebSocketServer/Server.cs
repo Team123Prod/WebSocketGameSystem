@@ -11,7 +11,7 @@ namespace GameSystem
 {
     public class Server: WebSocketBehavior
     {
-        readonly ModulesDispatcher _modulesDispatcher = new ModulesDispatcher();
+        //readonly ModulesDispatcher _modulesDispatcher = new ModulesDispatcher();
         ModulesDispatcher dispatcher = new ModulesDispatcher();
         protected override void OnOpen()
         {
@@ -20,8 +20,8 @@ namespace GameSystem
         protected override void OnMessage(MessageEventArgs e)
         {
             Console.WriteLine(e.Data);
-            Request request = JsonConvert.DeserializeObject<Request>(e.Data);
-            _modulesDispatcher.Distribute(request);
+            Request requstObject = JsonConvert.DeserializeObject<Request>(e.Data);
+            //_modulesDispatcher.Distribute(request);
             dispatcher.Distribute(requstObject);
 
         }
