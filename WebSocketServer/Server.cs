@@ -4,11 +4,13 @@ using GameSystem.Models;
 using Newtonsoft.Json;
 using WebSocketSharp;
 using WebSocketSharp.Server;
+using GameSystem.Controllers;
 
 namespace GameSystem
 {
     public class Server: WebSocketBehavior
     {
+        ModulesDispatcher dispatcher = new ModulesDispatcher();
         protected override void OnOpen()
         {
             Console.WriteLine("Client joined..");
@@ -16,10 +18,8 @@ namespace GameSystem
         protected override void OnMessage(MessageEventArgs e)
         {
             Request requstObject = JsonConvert.DeserializeObject<Request>(e.Data);
+            dispatcher.Distribute(requstObject);
 
-            //TicTacToe tic = new TicTacToe();
-            //tic.Start(requstObject._idMove);
-            //Sessions.Broadcast(requstObject._idMove.ToString());
         }
         protected override void OnClose(CloseEventArgs e)
         {

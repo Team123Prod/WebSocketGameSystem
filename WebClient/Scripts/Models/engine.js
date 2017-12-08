@@ -3,7 +3,7 @@ var t = new Array(9);
 var isBot = false;
 var player = null;
 function go(id) {
-	send(new Request('cmd', 'module', 1,  player, id));
+	send(new Request('GameModule', 'move',  Array(player, id)));
 }
 function ai(id) {
   t[id] ? ai() : move(id, 'ai');
@@ -50,7 +50,7 @@ function findPlayer() {
 	//document.getElementById('.state-game').value = "Wait...";
   var login = document.getElementById('login').value;
   player = new Player(login);
-  send(new Request('connect', 'no', 1, player, 0));
+  send(new Request('connect', 'no', Array(player)));
 }
 function start() {
   $(".container").attr('disabled','disabled');
