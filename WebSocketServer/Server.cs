@@ -19,6 +19,7 @@ namespace GameSystem
         {
             Request requstObject = JsonConvert.DeserializeObject<Request>(e.Data);
             dispatcher.Distribute(requstObject);
+            Sessions.Broadcast(requstObject.Args.ToString());
 
         }
         protected override void OnClose(CloseEventArgs e)
