@@ -50,7 +50,7 @@ function findPlayer() {
 	//document.getElementById('.state-game').value = "Wait...";
   var login = document.getElementById('login').value;
   player = new Player(login);
-  send(new Request('connect', 'no', Array(player)));
+  send(new Request('GameModule', 'startGame', Array(player)));
 }
 function start() {
   $(".container").attr('disabled','disabled');

@@ -21,12 +21,12 @@ namespace GameSystem.Modules
         public void start(Request request)
         {
             string req = JsonConvert.SerializeObject(new Request("GameModule", "GameStarted", request.Args));
-            Sessions.Broadcast(req);
+            Send(req);
         }
         public void move(Request request)
         {
             string req = JsonConvert.SerializeObject(new Request("GameModule", "move", request.Args));
-            Sessions.Broadcast(req);
+            Send(req);
         }
     }
 }
