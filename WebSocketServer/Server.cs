@@ -1,4 +1,5 @@
 ﻿using System;
+using GameSystem.Controllers;
 using GameSystem.Game;
 using GameSystem.Models;
 using Newtonsoft.Json;
@@ -10,6 +11,7 @@ namespace GameSystem
 {
     public class Server: WebSocketBehavior
     {
+        //readonly ModulesDispatcher _modulesDispatcher = new ModulesDispatcher();
         ModulesDispatcher dispatcher = new ModulesDispatcher();
         protected override void OnOpen()
         {
@@ -17,7 +19,9 @@ namespace GameSystem
         }
         protected override void OnMessage(MessageEventArgs e)
         {
+            Console.WriteLine(e.Data);
             Request requstObject = JsonConvert.DeserializeObject<Request>(e.Data);
+            //_modulesDispatcher.Distribute(request);
             dispatcher.Distribute(requstObject);
             Sessions.Broadcast(requstObject.Args.ToString());
 
@@ -25,6 +29,7 @@ namespace GameSystem
         protected override void OnClose(CloseEventArgs e)
         {
             base.OnClose(e);
+            Console.WriteLine("Client leaved..");
         }
         protected override void OnError(ErrorEventArgs e)
         {
