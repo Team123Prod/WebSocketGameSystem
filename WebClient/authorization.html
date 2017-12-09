@@ -40,6 +40,7 @@
 	</div>
 
 	<script>
+		var ws = new Connection();
 	    $('#submit').click(sendAuthRequest);
 
 		function getAuthData() {
@@ -53,7 +54,7 @@
 
         function sendAuthRequest() {
             var request = new Request("AuthModule", "Login", getAuthData());
-            var json = JSON.stringify(request);
+			var json = JSON.stringify(request);
             ws.send(json);
             return false;
         }
