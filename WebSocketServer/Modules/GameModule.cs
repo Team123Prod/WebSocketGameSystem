@@ -11,19 +11,19 @@ namespace GameSystem.Modules
             switch (request.Cmd)
             {
                 case "startGame":
-                    start(request);
+                    Start(request);
                     break;
                 case "move":
-                    move(request);
+                    Move(request);
                     break;
             }
         }
-        public void start(Request request)
+        public void Start(Request request)
         {
             string req = JsonConvert.SerializeObject(new Request("GameModule", "GameStarted", request.Args));
             Send(req);
         }
-        public void move(Request request)
+        public void Move(Request request)
         {
             string req = JsonConvert.SerializeObject(new Request("GameModule", "move", request.Args));
             Send(req);

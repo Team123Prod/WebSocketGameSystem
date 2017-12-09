@@ -26,13 +26,15 @@ function checkEnd() {
 }
 
 function move(id, role) {
-  if(t[id]) return false;
+  if (t[id])
+      return false;
   t[id] = role;
   document.getElementById(id).className = 'cell ' + role;
   var checkBox = document.getElementById('isBot');
   if(checkBox.checked){
 	!checkEnd() ? (role === 'player') ? aiBot() : null : reset()
-  }else{
+  }
+  else {
 	!checkEnd() ? (role === 'player') ? go(id) : null : reset()
   }
 }
