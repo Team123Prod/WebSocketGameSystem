@@ -1,12 +1,10 @@
-﻿using GameServer.DAO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameServer.Models;
+using GameSystem.DAO;
+using GameSystem.Models;
 
-namespace GameServer.DbMock
+namespace GameSystem.DbMock
 {
     public class UserAccountDAO_Mock : IUserAccountDAO
     {
@@ -18,6 +16,7 @@ namespace GameServer.DbMock
             users.Add(new UserAccount() { Id = 1, Email = "v123@gmail.com", Login = "vasya", Password = "1" });
             users.Add(new UserAccount() { Id = 2, Email = "l123@gmail.com", Login = "lola", Password = "2" });
             users.Add(new UserAccount() { Id = 3, Email = "m123@gmail.com", Login = "misha", Password = "3" });
+            users.Add(new UserAccount() { Id = 4, Email = "test@gmail.com", Login = "test", Password = "123" });
         }
         public void Create(UserAccount p)
         {
@@ -45,6 +44,16 @@ namespace GameServer.DbMock
                     u.Password = p.Password;
                 }
             }
+        }
+
+        //public bool CheckLoginExists(string login)
+        //{
+        //    return users.Any(account => string.Compare(account.Login, login) == 0);
+        //}
+
+        public UserAccount GetUserByLogin(string login)
+        {
+            return users.FirstOrDefault(account => string.Compare(account.Login, login) == 0);
         }
     }
 }

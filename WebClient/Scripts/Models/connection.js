@@ -42,6 +42,7 @@ class Connection {
 
         this.ws.onmessage = function (evt) {
             var msg = JSON.parse(evt.data);
+            console.log(msg);
             if (msg.login === login) {
                 $(".state-game").text("Your tern...");
                 ai(msg);

@@ -1,11 +1,7 @@
-﻿using GameServer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using GameSystem.Models;
 
-namespace GameServer.DAO
+namespace GameSystem.DAO
 {
     interface IUserAccountDAO
     {
@@ -13,5 +9,6 @@ namespace GameServer.DAO
         void Delete(UserAccount p);
         List<UserAccount> Read();
         void Update(UserAccount p);
+        UserAccount GetUserByLogin(string login);
     }
 }
