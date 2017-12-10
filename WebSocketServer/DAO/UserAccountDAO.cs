@@ -1,11 +1,8 @@
-﻿using GameServer.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GameSystem.Models;
 
-namespace GameServer.DAO
+namespace GameSystem.DAO
 {
     public class UserAccountDAO: IUserAccountDAO
     {
@@ -44,6 +41,11 @@ namespace GameServer.DAO
                 context.Entry(original).CurrentValues.SetValues(p);
                 context.SaveChanges();
             }
+        }
+
+        public UserAccount GetUserByLogin(string login)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

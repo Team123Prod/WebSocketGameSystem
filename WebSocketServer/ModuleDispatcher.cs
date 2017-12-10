@@ -1,20 +1,20 @@
-﻿using GameSystem.Models;
+﻿using System;
+using GameSystem.Models;
 using GameSystem.Modules;
+using WebSocketSharp.Server;
 
-namespace GameSystem.Controllers
+namespace GameSystem
 {
     public class ModulesDispatcher
     {
-        public ModulesDispatcher()
+        public void Distribute(Request request, Server webSocket)
         {
-
-        }
-        public void Distribute(Request request)
-        {
+            request.DefineUserStatus();
+            Console.WriteLine("UserStatus: " + request.UserStatus);
             switch (request.Module)
             {
                 case "AuthModule":
-                    new AuthModule().Dispach(request);
+                    new AuthModule().Dispach(request, webSocket);
                     break;
                 case "ProfileModule":
                     new ProfileModule().Dispach(request);
@@ -28,9 +28,9 @@ namespace GameSystem.Controllers
                 case "RateModule":
                     new RateModule().Dispach(request);
                     break;
-                default:
-                    break;
             }
         }
+
+
     }
 }

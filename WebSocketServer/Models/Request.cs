@@ -1,4 +1,8 @@
-﻿namespace GameSystem.Models
+﻿using GameSystem.DAO;
+using GameSystem.DbMock;
+using Newtonsoft.Json.Linq;
+
+namespace GameSystem.Models
 {
     public class Request
     {
@@ -6,16 +10,28 @@
         {
 
         }
-        public Request(string Module, string Cmd, object Args)
+        public Request(string module, string cmd, dynamic args)
         {
-            this.Module = Module;
-            this.Cmd = Cmd;
-            this.Args = Args;
+            this.Module = module;
+            this.Cmd = cmd;
+            this.Args = args;
         }
 
         public string Module { get; set; }
         public string Cmd { get; set; }
-        public object Args { get; set; }
+        public dynamic Args { get; set; }
+        public string Token { get; set; }
+        public UserStatus UserStatus { get; set; } = UserStatus.Guest;
+
+
+        public void DefineUserStatus()
+        {
+            IUserAccountDAO db = new UserAccountDAO_Mock();
+            if (db.GetUserByLogin(TokenProvider.GetLogin(Token)) != null)
+            {
+                UserStatus = UserStatus.Authorized;
+            }
+        }
     }
 
     //public class Request

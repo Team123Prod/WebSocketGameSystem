@@ -3,5 +3,6 @@ class Request {
         this.cmd = cmd;
         this.module = module;
         this.args = args;
+        this.token = TokenProvider.getToken();
     }
 }
