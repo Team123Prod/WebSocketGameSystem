@@ -2,6 +2,7 @@
 using GameSystem.DAO;
 using GameSystem.DbMock;
 using GameSystem.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebSocketSharp.Server;
 
@@ -9,12 +10,14 @@ namespace GameSystem.Modules
 {
     public class AuthModule
     {
-        public void Dispach(Request request, Server webSocket)//сюда свои параметры Client client, RequestObject info, List<Client> clientsList)
+        public void Dispach(Request request, Server webSocket)
         {
-            //Response response = null;
+            dynamic response = null;
             switch (request.Cmd)
             {
                 case "Login":
+                    response = new Response();
+                    response.Cmd = "Login";
                     if (request.UserStatus == UserStatus.Authorized)
                     {
                         //user is already authorized, just update token
@@ -26,26 +29,33 @@ namespace GameSystem.Modules
                         string password = request.Args.Password;
                         UserAccount account = db.GetUserByLogin(login);
                         if (account == null)
-                            webSocket.SendResponse("Error: invalid login");
+                        {
+                            response.Args = new { Error = "invalid login" };
+                        }
                         else
                         {
                             if (string.Compare(account.Password, password) == 0)
                             {
-                                webSocket.SendResponse(TokenProvider.GetToken(account.Login));
+                                string token = TokenProvider.GetToken(account.Login);
+                                response.Token = token;
                             }
                             else
                             {
-                                webSocket.SendResponse("Error: invalid password");
+                                response.Args = new { Error = "invalid password" };
                             }
                         }
-                        //find login and pasw in Db
-                        //webSocket.SendResponse(TokenProvider.GetToken());
                     }
                     break;
                 case "Logout":
                     break;
                 case "Registration":
                     break;
+            }
+            if (response != null)
+            {
+                response.Module = "AuthModule";
+                string json = JsonConvert.SerializeObject(response);
+                webSocket.SendResponse(json);
             }
         }
     }
