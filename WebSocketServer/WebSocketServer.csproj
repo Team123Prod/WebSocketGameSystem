@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F14AE0A6-9114-49CE-B185-BDD5F11EC73D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GameServer</RootNamespace>
+    <RootNamespace>GameSystem</RootNamespace>
     <AssemblyName>GameSystem</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
