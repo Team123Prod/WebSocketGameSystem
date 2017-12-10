@@ -2,16 +2,16 @@
 
 function GameModule(request) {
     switch (request.cmd) {
-        case "startGame":
-            Start(request);
+		case "CreateRoom":
+			CreateRoom(request);
             break;
-        case "move":
+        case "Move":
             Move(request);
             break;
     }
 }
 
-function Start(request)
+function CreateRoom(request)
 {
     var reqJson = JSON.stringify(new Request("GameModule", "GameStarted", request.args))
     ws = new Connection();
@@ -19,7 +19,7 @@ function Start(request)
 }
 
 function Move(request) {
-    var reqJson = JSON.stringify(new Request("GameModule", "move", request.args))
+    var reqJson = JSON.stringify(new Request("GameModule", "Move", request.args))
     ws = new Connection();
     ws.send(reqJson);
 }

@@ -7,15 +7,24 @@ namespace GameSystem.Models
     {
         public int id;
         private List<Player> listOfPlayers { get; set; }
-        public string _typeOfGame { get; set; }
+        public IType _typeOfGame { get; set; }
 
         public void AddPlayer(string login, IType typeGame)
         {
             listOfPlayers.Add(new Player(login));
         }
-        public Room(string typeOfGame)
+        public Room(IType typeOfGame)
         {
             _typeOfGame = typeOfGame;
+        }
+
+        public void Move(int move)
+        {
+
+        }
+        public void Start(int move)
+        {
+
         }
     }
 }

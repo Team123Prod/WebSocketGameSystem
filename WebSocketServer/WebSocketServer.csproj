@@ -67,7 +67,6 @@
     <Compile Include="Game\IType.cs" />
     <Compile Include="Game\TicTacToe.cs" />
     <Compile Include="Game\TypeGameFactory.cs" />
-    <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Room.cs" />

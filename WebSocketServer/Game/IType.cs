@@ -2,6 +2,10 @@
 {
     public interface IType
     {
-        void createRoom();
+        void Create();
+        void Move();
+        void ChangeState();
+
+
     }
 }
