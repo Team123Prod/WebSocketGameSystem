@@ -20,7 +20,7 @@ namespace GameSystem
                     new ProfileModule().Dispach(request);
                     break;
                 case "GameModule":
-                    new GameModule().Dispach(request);
+                    new GameModule().Dispach(request, webSocket);
                     break;
                 case "MsgModule":
                     new MsgModule().Dispach(request);

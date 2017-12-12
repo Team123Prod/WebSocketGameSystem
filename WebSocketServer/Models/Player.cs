@@ -3,6 +3,7 @@
     public class Player
     {
         public string _login;
+        public int idRoom { get; set; }
 
        public Player(string login)
        {

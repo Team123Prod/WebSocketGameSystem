@@ -1,32 +1,46 @@
 ﻿using GameSystem.Models;
 using WebSocketSharp.Server;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using GameSystem.Game;
 
 namespace GameSystem.Modules
 {
     public class GameModule : WebSocketBehavior
     {
-        public void Dispach(Request request)//сюда свои параметры Client client, RequestObject info, List<Client> clientsList)
+        private List<Room> _listOfRooms { get; set; }
+        private List<Player> _listOfPlayers { get; set; }
+        public void Dispach(Request request, Server webSocket)
         {
             switch (request.Cmd)
             {
-                case "startGame":
-                    Start(request);
+                case "CreateRoom":
+                    CreateRoom(request, webSocket);
                     break;
-                case "move":
-                    Move(request);
+                case "Move":
+                    Move(request, webSocket);
                     break;
             }
         }
-        public void Start(Request request)
+
+        public void CreateRoom(Request request, Server websocket)
         {
-            string req = JsonConvert.SerializeObject(new Request("GameModule", "GameStarted", request.Args));
-            Send(req);
+            _listOfPlayers.Add(request.Args.player);
+            _listOfRooms.Add(new Room(request, websocket));
         }
-        public void Move(Request request)
+        public void Move(Request request, Server websocket)
         {
-            string req = JsonConvert.SerializeObject(new Request("GameModule", "move", request.Args));
-            Send(req);
+            Room room = GetRoomById(request.Args.idRoom);
+        }
+        private Room GetRoomById(int idRoom)
+        {
+            Room room = null;
+            foreach(Room r in _listOfRooms)
+            {
+                if (r.id == idRoom)
+                    room = r;
+            }
+            return room;
         }
     }
 }

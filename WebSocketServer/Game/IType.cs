@@ -1,7 +1,13 @@
-﻿namespace GameSystem.Game
+﻿using GameSystem.Models;
+
+namespace GameSystem.Game
 {
     public interface IType
     {
-        void createRoom();
+        void Create(Player player, Server websocket);
+        void Move(Player player, int move, Server websocket);
+        void ChangeState();
+
+
     }
 }

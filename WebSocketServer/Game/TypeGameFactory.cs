@@ -4,10 +4,10 @@ namespace GameSystem.Game
 {
     public class TypeGameFactory
     {
-        static IType getTypeOfGame(Request req)
+        public static IType getTypeOfGame(string tp)
         {
             IType typeGame = null;
-            switch (req.Cmd)
+            switch (tp)
             {
                 case "TicTacToe":
                     typeGame = new TicTacToe();
