@@ -8,33 +8,39 @@ namespace GameSystem.Modules
 {
     public class GameModule : WebSocketBehavior
     {
-        private List<Room> listOfRooms { get; set; }
-        private List<Player> listOfPlayers { get; set; }
-        public void Dispach(Request request)
+        private List<Room> _listOfRooms { get; set; }
+        private List<Player> _listOfPlayers { get; set; }
+        public void Dispach(Request request, Server webSocket)
         {
             switch (request.Cmd)
             {
                 case "CreateRoom":
-                    CreateRoom((IType)request.Args, (IType)request.Args);
+                    CreateRoom(request, webSocket);
                     break;
                 case "Move":
-                    Move(request);
+                    Move(request, webSocket);
                     break;
             }
         }
 
-        public void CreateRoom(IType typeOfGame, Player player)
+        public void CreateRoom(Request request, Server websocket)
         {
-            listOfRooms.Add(new Room(typeOfGame, player));
+            _listOfPlayers.Add(request.Args.player);
+            _listOfRooms.Add(new Room(request, websocket));
         }
-        public void AddPlayer(Player player)
+        public void Move(Request request, Server websocket)
         {
-            listOfPlayers.Add(player);
+            Room room = GetRoomById(request.Args.idRoom);
         }
-        public void Move(Request request)
+        private Room GetRoomById(int idRoom)
         {
-            string req = JsonConvert.SerializeObject(new Request("GameModule", "move", request.Args));
-            Send(req);
+            Room room = null;
+            foreach(Room r in _listOfRooms)
+            {
+                if (r.id == idRoom)
+                    room = r;
+            }
+            return room;
         }
     }
 }

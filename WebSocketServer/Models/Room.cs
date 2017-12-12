@@ -9,22 +9,17 @@ namespace GameSystem.Models
         private List<Player> listOfPlayers { get; set; }
         public IType _typeOfGame { get; set; }
 
-        public void AddPlayer(string login, IType typeGame)
+        public Room(Request request, Server websocket)
         {
-            listOfPlayers.Add(new Player(login));
-        }
-        public Room(IType typeOfGame)
-        {
-            _typeOfGame = typeOfGame;
-        }
-
-        public void Move(int move)
-        {
+            listOfPlayers.Add(request.Args.player);
+            _typeOfGame = TypeGameFactory.getTypeOfGame(request.Args.typeGame);
+            _typeOfGame.Create(request.Args.player, websocket);
 
         }
-        public void Start(int move)
-        {
 
+        public void Move(Player player, int move, Server websocket)
+        {
+            _typeOfGame.Move(player, move, websocket);
         }
     }
 }
