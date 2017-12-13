@@ -3,18 +3,23 @@ class Connection {
         this.ws = new WebSocket("ws://localhost:8881/Server");
 
         this.ws.onmessage = function (evt) {
-            var msg = evt.data;
-            console.log(msg);
-            if (msg.login) {
-                //var msg = JSON.parse(evt.data);
-                if (msg.login === login) {
-                    $(".state-game").text("Your turn...");
-                    ai(msg);
-                }
-                else {
-                    $(".state-game").text("Wait...");
-                }
-            }
+            var response = JSON.parse(evt.data);
+
+            console.log(response);
+
+            var moduleDispatcher = new ModuleDispatcher();
+            moduleDispatcher.Distribute(response);
+
+            //if (msg.login) {
+            //    //var msg = JSON.parse(evt.data);
+            //    if (msg.login === login) {
+            //        $(".state-game").text("Your turn...");
+            //        ai(msg);
+            //    }
+            //    else {
+            //        $(".state-game").text("Wait...");
+            //    }
+            //}
         };
 
         this.ws.onopen = function () {

@@ -1,4 +1,4 @@
-﻿class ModulesDispatcher {
+﻿class ModuleDispatcher {
     Distribute(request) {
         switch (request.Module) {
             case "AuthModule":

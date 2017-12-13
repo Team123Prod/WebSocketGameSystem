@@ -6,7 +6,7 @@ using GameSystem.Game;
 
 namespace GameSystem.Modules
 {
-    public class GameModule : WebSocketBehavior
+    public class GameModule /*: WebSocketBehavior*/
     {
         private List<Room> _listOfRooms { get; set; }
         private List<Player> _listOfPlayers { get; set; }
