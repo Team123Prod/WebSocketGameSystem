@@ -1,25 +1,14 @@
 class Connection {
     constructor() {
         this.ws = new WebSocket("ws://localhost:8881/Server");
+        var moduleDispatcher = new ModuleDispatcher();
 
         this.ws.onmessage = function (evt) {
             var response = JSON.parse(evt.data);
 
-            console.log(response);
+            console.log("onmessage. Response = " + response);
 
-            var moduleDispatcher = new ModuleDispatcher();
             moduleDispatcher.Distribute(response);
-
-            //if (msg.login) {
-            //    //var msg = JSON.parse(evt.data);
-            //    if (msg.login === login) {
-            //        $(".state-game").text("Your turn...");
-            //        ai(msg);
-            //    }
-            //    else {
-            //        $(".state-game").text("Wait...");
-            //    }
-            //}
         };
 
         this.ws.onopen = function () {
@@ -34,12 +23,35 @@ class Connection {
             console.log('Error connection');
         };
 
+        this.addEventHandlers();
+
     }
+
     send(req) {
-        //var reqJson = JSON.stringify(req);
-        //this.ws.send(reqJson);
         this.ws.send(req);
     }
+
+    addEventHandlers() {
+        var self = this;
+        $(document).ready(function () {
+            var sendAuthReq = self.sendAuthRequest.bind(self);
+            var sendRegistrationReq = self.sendRegistrationRequest.bind(self);
+            $('#authSubmit').click(sendAuthReq);
+            $('#registrationSubmit').click(sendRegistrationReq);
+        });
+    }
+
+    sendAuthRequest() {
+        var request = new Request("AuthModule", "Login", AuthModule.getAuthData());
+        var json = JSON.stringify(request);
+        this.send(json);
+        return false;
+    }
+
+    sendRegistrationRequest() {
+        var request = new Request("AuthModule", "Registration", AuthModule.getRegistrationData());
+        var json = JSON.stringify(request);
+        this.send(json);
+        return false;
+    }
 }
-
-

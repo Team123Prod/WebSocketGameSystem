@@ -7,44 +7,91 @@
     <script src="Scripts/Libs/bootstrap.min.js"></script>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/Libs/jquery.cookie-1.4.1.min.js"></script>
+
     <script src="Scripts/TokenProvider.js"></script>
     <script src="Scripts/Models/Request.js"></script>
     <script src="Scripts/Modules/AuthModule.js"></script>
     <script src="Scripts/ModuleDispatcher.js"></script>
     <script src="Scripts/Models/connection.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var ws = new Connection();
+        });
+    </script>
 </head>
 <body>
 
-<!--Authorization page-->
+    <!--Authorization page-->
 
-<div id="authorization" class="container">
-    <h2 align=center>Authorization</h2>
-    <h3 align=center>
-        Welcome!
-        <br/> Please, sign in.
-    </h3>
-    <form class="form-horizontal" action="">
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="login">Login:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" id="login" placeholder="Enter login" name="login" required>
+    <div id="authorization" class="container">
+        <h2 align=center>Authorization</h2>
+        <h3 align=center>
+            Welcome!
+            <br /> Please, sign in.
+        </h3>
+        <form class="form-horizontal" action="">
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="login">Login:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="authLogin" placeholder="Enter login" required>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="pwd">Password:</label>
-            <div class="col-sm-5">
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="authPassword">Password:</label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" id="authPassword" placeholder="Enter password" required>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-6">
-                <a class="col-sm-4" href="">Registration</a>
-                <button type="submit" class="btn btn-default" id="submit">Submit</button>
+            <div class="form-group">
+                <div class="col-sm-offset-6">
+                    <a class="col-sm-4" href="">Registration</a>
+                    <button type="submit" class="btn btn-default" id="authSubmit">Submit</button>
+                </div>
             </div>
+        </form>
+    </div>
+    <div id="registration" class="container">
+        <h2 align=center>Registration</h2>
+        <div class="row">
+            <div class="col-md-10"><a href="">Player Rankings</a></div>
+            <div class="col-md-12"><a href="">Sign in</a></div>
         </div>
-    </form>
-</div>
-<script src="Scripts/authorization.js"></script>
+        <button type="button" class="btn btn-default">Back to lobby</button>
+        <form class="form-horizontal" action="">
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="email">Email*</label>
+                <div class="col-sm-5">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="registrationLogin">Login*</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="registrationLogin" placeholder="Enter login" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="registrationPassword">Password*</label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" id="registrationPassword" placeholder="Enter password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="registrationPassword2">Repeat*</label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" id="registrationPassword2" placeholder="Repeat password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-8">
+                    <button type="submit" class="btn btn-default" id="registrationSubmit">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
 
 </body>
 </html>

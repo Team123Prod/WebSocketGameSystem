@@ -1,8 +1,11 @@
 ﻿class ModuleDispatcher {
+    constructor() {
+        this.authModule = new AuthModule();
+    }
     Distribute(request) {
         switch (request.Module) {
             case "AuthModule":
-                new AuthModule().Dispach(request);
+                this.authModule.Dispach(request);
                 break;
             case "ProfileModule":
                 new ProfileModule().Dispach(request);
