@@ -6,8 +6,6 @@ namespace GameSystem.Game
     {
         void Create(Player player, Server websocket);
         void Move(Player player, int move, Server websocket);
-        void ChangeState();
-
 
     }
 }

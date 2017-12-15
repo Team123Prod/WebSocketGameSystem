@@ -1,6 +1,6 @@
 class Player {
 	constructor(login) {
-		this.login = login;
-		this.idRoom = 0;
+		this._login = login;
+		this._idRoom = 0;
   }
 }
