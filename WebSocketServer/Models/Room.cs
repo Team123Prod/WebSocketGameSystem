@@ -11,15 +11,17 @@ namespace GameSystem.Models
 
         public Room(Request request, Server websocket)
         {
+            id = 3;
+            request.Args.idRoom = id;
             listOfPlayers.Add(request.Args.player);
             _typeOfGame = TypeGameFactory.getTypeOfGame(request.Args.typeGame);
             _typeOfGame.Create(request.Args.player, websocket);
 
         }
 
-        public void Move(Player player, int move, Server websocket)
+        public void Move(Request request, Server websocket)
         {
-            _typeOfGame.Move(player, move, websocket);
+            _typeOfGame.Move(request.Args.player, request.Args.move, websocket);
         }
     }
 }

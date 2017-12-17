@@ -1,7 +1,7 @@
 ﻿class GameModule {
    GameModule(request) {
 	switch (request.cmd) {
-		case "CreateRoom":
+		case "GameResponse":
 			CreateRoom(request);
 			break;
 		case "Move":
@@ -10,15 +10,11 @@
 	}
 }
 
-	CreateRoom(request) {
-		var reqJson = JSON.stringify(new Request("GameModule", "GameStarted", request.args))
-		ws = new Connection();
-		ws.send(reqJson);
+   CreateRoom(request) {
+	   changeSettingsPlayer(request.args.mark, request.args.idRoom);
 	}
 
 	Move(request) {
-		var reqJson = JSON.stringify(new Request("GameModule", "Move", request.args))
-		ws = new Connection();
-		ws.send(reqJson);
+		move(id);
 	}
 }

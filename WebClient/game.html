@@ -4,45 +4,49 @@
     <meta charset="utf-8" />
     <title>Крестики-нолики</title>
     <script src="Scripts/Libs/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/Libs/jquery.cookie-1.4.1.min.js"></script>
     <script src="Scripts/Libs/bootstrap.min.js"></script>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/Custom/styleGame.css" rel="stylesheet" />
+
 	<script src="Scripts/TokenProvider.js"></script>
 	<script src="Scripts/Models/Request.js"></script>
-    <script src="Scripts/Models/connection.js"></script>
-    <script src="Scripts/Models/engine.js"></script>
-    <script src="Scripts/Models/Player.js"></script>
+	<script src="Scripts/Models/Player.js"></script>
+	<script src="Scripts/Modules/AuthModule.js"></script>
+	<script src="Scripts/ModuleDispatcher.js"></script>
+	<script src="Scripts/Models/connection.js"></script>
 	<script src="Scripts/Models/ShowModels.js"></script>
+	<script src="Scripts/Models/engine.js"></script>
 </head>
 <body>
 	
 	<div class="checkbox">
-		<input type="button" onclick="reload()" value="Reload"><p>
+		<input type="button" value="Reload"><p>
 			<label><input id="isBot" type="checkbox">Play with bot!</label><br>
 			Your login: <br><input type="text" id="login" value="">
 		<p>
 			<input type="button" onclick="findPlayer()" value="Find player">
 		<p>
-			<input type="button" onclick="start()" value="Start">
+			<input type="button" value="Start">
 		<p>
 	</div>
 	<span class="state-game">Wait...</span><br />
     <div class="container" id="container">
         <table>
             <tr>
-                <td class="cell" id="0" onclick="move(0, 'player')"></td>
-                <td class="cell" id="1" onclick="move(1, 'player')"></td>
-                <td class="cell" id="2" onclick="move(2, 'player')"></td>
+                <td class="cell" id="0" onclick="go(0)"></td>
+                <td class="cell" id="1" onclick="go(1)"></td>
+                <td class="cell" id="2" onclick="go(2)"></td>
             </tr>
             <tr>
-                <td class="cell" id="3" onclick="move(3, 'player')"></td>
-                <td class="cell" id="4" onclick="move(4, 'player')"></td>
-                <td class="cell" id="5" onclick="move(5, 'player')"></td>
+                <td class="cell" id="3" onclick="go(3)"></td>
+                <td class="cell" id="4" onclick="go(4)"></td>
+                <td class="cell" id="5" onclick="go(5)"></td>
             </tr>
             <tr>
-                <td class="cell" id="6" onclick="move(6, 'player')"></td>
-                <td class="cell" id="7" onclick="move(7, 'player')"></td>
-                <td class="cell" id="8" onclick="move(8, 'player')"></td>
+                <td class="cell" id="6" onclick="go(6)"></td>
+                <td class="cell" id="7" onclick="go(7)"></td>
+                <td class="cell" id="8" onclick="go(8)"></td>
             </tr>
         </table>
     </div>
